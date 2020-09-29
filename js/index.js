@@ -21,7 +21,8 @@ function secsToMins( time )
 function getCurrentTime()
 {
 	var currentTimeFormatted  = secsToMins( audio[ 0 ].currentTime ),
-	    currentTimePercentage = audio[ 0 ].currentTime / audio[ 0 ].duration * 100;
+	    currentTimePercentage = audio[ 0 ].currentTime /
+	                            audio[ 0 ].duration * 100;
 
 	currentTime.text( currentTimeFormatted );
 	progressBar.css( 'width', currentTimePercentage + '%' );
@@ -47,6 +48,7 @@ audio.on( 'loadedmetadata', function ()
 	{
 		player.removeClass( 'playing' )
 		      .addClass( 'paused' );
+
 		audio[ 0 ].currentTime = 0;
 	}
 } );
@@ -65,7 +67,7 @@ $( 'button' ).on( 'click', function ()
 	}
 	else
 	if ( self.hasClass( 'play-pause' ) &&
-	     player.hasClass( 'playing' ) )
+	          player.hasClass( 'playing' ) )
 	{
 		player.removeClass( 'playing' )
 		      .addClass( 'paused' );
@@ -90,7 +92,8 @@ $( 'button' ).on( 'click', function ()
 		player.addClass( 'rwing' );
 		rewind = setInterval( function () { audio[ 0 ].currentTime -= .3; }, 100 );
 	}
-} ).on( 'mouseup', function ()
+} )
+.on( 'mouseup', function ()
 {
 	var self = $( this );
 
@@ -120,7 +123,8 @@ progressBar.parent()
 	               offsetX          = e.offsetX,
 	               offsetPercentage = offsetX / totalWidth;
 
-	           if ( mouseDown || e.type === 'click' )
+	           if ( mouseDown ||
+	                e.type === 'click' )
 	           {
 		           audio[ 0 ].currentTime = audio[ 0 ].duration * offsetPercentage;
 		           if ( player.hasClass( 'paused' ) )
