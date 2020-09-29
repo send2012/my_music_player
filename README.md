@@ -1,2 +1,4 @@
-# my_music_player
-A music player use css
+# my analog audio player
+This is my style music --> analog music player.
+
+html && css && javascript && jQuery.
