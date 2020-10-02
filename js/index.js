@@ -25,6 +25,7 @@ function getCurrentTime()
 	                            audio[ 0 ].duration * 100;
 
 	currentTime.text( currentTimeFormatted );
+
 	progressBar.css( 'width', currentTimePercentage + '%' );
 
 	if ( player.hasClass( 'playing' ) )
@@ -92,8 +93,7 @@ $( 'button' ).on( 'click', function ()
 		player.addClass( 'rwing' );
 		rewind = setInterval( function () { audio[ 0 ].currentTime -= .3; }, 100 );
 	}
-} )
-.on( 'mouseup', function ()
+} ).on( 'mouseup', function ()
 {
 	var self = $( this );
 
